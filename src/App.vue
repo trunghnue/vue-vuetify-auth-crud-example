@@ -38,9 +38,6 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-6 offset-sm-3">
-              <!-- <router-view></router-view> -->
-              <!-- <LoginPage /> -->
-              <!-- <RegisterPage/> -->
               <router-view></router-view>
             </div>
           </div>
@@ -51,15 +48,12 @@
 </template>
 
 <script>
-// import LoginPage from "./components/LoginPage";
-// import RegisterPage from "./components/RegisterPage";
 
 export default {
   name: "App",
 
   components: {
-    // LoginPage,
-    // RegisterPage,
+    
   },
 
   data: () => ({

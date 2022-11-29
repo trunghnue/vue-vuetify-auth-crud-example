@@ -11,8 +11,16 @@
           - ERROR: {{ user.deleteError }}</span
         >
         <span v-else>
-          - <a @click="deleteUser(user.id)" class="text-danger">Delete</a></span
-        >
+          - <a @click="deleteUser(user.id)" class="text-danger">Delete</a>
+          <router-link
+            v-if="user.id == account.user.id"
+            to="/edit"
+            @click="getById(user.id)"
+            class="text-danger"
+          >
+            - Edit
+          </router-link>
+        </span>
       </li>
     </ul>
     <p>
@@ -22,23 +30,24 @@
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import { mapState, mapActions } from "vuex";
 
 export default {
   computed: {
     ...mapState({
-      account: state => state.account,
-      users: state => state.users.all
-    })
+      account: (state) => state.account,
+      users: (state) => state.users.all,
+    }),
   },
   created() {
     this.getAllUsers();
   },
   methods: {
-    ...mapActions('users', {
-      getAllUsers: 'getAll',
-      deleteUser: 'delete'
-    })
+    ...mapActions("users", {
+      getAllUsers: "getAll",
+      deleteUser: "delete",
+      getById: "getById",
+    }),
   },
 };
 </script>
